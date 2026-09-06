@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Alien Kingdom Classic</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet" />
+    <style>
+      html, body { margin: 0; height: 100%; background: #0e0a1c; overflow: hidden; }
+      body { font-family: 'Press Start 2P', 'Courier New', monospace; color: #fff; }
+      canvas#game {
+        display: block; width: 100vw; height: 100vh;
+        image-rendering: pixelated; image-rendering: crisp-edges;
+      }
+      #ui { position: fixed; inset: 0; pointer-events: none; }
+      .shadow { text-shadow: 2px 2px 0 #000, -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000; }
+      #stats { position: absolute; top: 14px; left: 16px; font-size: 12px; line-height: 22px; }
+      #stats span.v { color: #ffe66d; }
+      #hubbar { width: 160px; height: 10px; border: 2px solid #000; background: #3a1e1e; margin-top: 4px; }
+      #hubfill { height: 100%; width: 100%; background: #4ff0ff; }
+      #clock { position: absolute; top: 14px; right: 16px; font-size: 12px; text-align: right; line-height: 22px; }
+      #prompt { position: absolute; bottom: 56px; width: 100%; text-align: center; font-size: 12px; color: #ffe66d; }
+      #banner { position: absolute; top: 34%; width: 100%; text-align: center; font-size: 20px; color: #fff; opacity: 0; transition: opacity .4s; }
+      #help { position: absolute; bottom: 16px; width: 100%; text-align: center; font-size: 9px; color: #cfd6dd; opacity: .8; }
+      #over { position: absolute; inset: 0; background: rgba(8,4,18,.8); display: none; align-items: center; justify-content: center; flex-direction: column; text-align: center; pointer-events: auto; }
+      #over h1 { font-size: 26px; color: #ff6b6b; margin: 0 0 20px; }
+      #over p { font-size: 12px; line-height: 24px; margin: 0; }
+      #over button { margin-top: 24px; font: inherit; font-size: 12px; padding: 12px 20px; background: #ffe66d; color: #000; border: 3px solid #000; cursor: pointer; }
+    </style>
+  </head>
+  <body>
+    <canvas id="game"></canvas>
+    <div id="ui">
+      <div id="stats" class="shadow">
+        <div>SCRAP <span class="v" id="scrap">0</span></div>
+        <div>BOTS <span class="v" id="bots">0</span></div>
+        <div>HAB</div>
+        <div id="hubbar"><div id="hubfill"></div></div>
+      </div>
+      <div id="clock" class="shadow">
+        <div>SOL <span class="v" id="day">1</span></div>
+        <div id="phase">DAY</div>
+      </div>
+      <div id="banner" class="shadow"></div>
+      <div id="prompt" class="shadow"></div>
+      <div id="help" class="shadow">A/D move · E interact · aliens come at night</div>
+      <div id="over">
+        <h1>HAB DESTROYED</h1>
+        <p id="overtext"></p>
+        <button id="restart">REBOOT COLONY</button>
+      </div>
+    </div>
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
